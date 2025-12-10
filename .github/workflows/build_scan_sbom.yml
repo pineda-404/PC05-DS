@@ -30,11 +30,11 @@ jobs:
           # Instalar Trivy si no está disponible
           if ! command -v trivy &> /dev/null; then
             echo "Installing Trivy..."
-            # Método moderno sin apt-key (deprecado)
-            wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo gpg --dearmor -o /usr/share/keyrings/trivy-archive-keyring.gpg
-            echo "deb [signed-by=/usr/share/keyrings/trivy-archive-keyring.gpg] https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/trivy.list
-            sudo apt-get update
-            sudo apt-get install trivy -y
+            # Instalar desde binario oficial (compatible con cualquier distro)
+            wget -qO trivy.tar.gz https://github.com/aquasecurity/trivy/releases/download/v0.48.0/trivy_0.48.0_Linux-64bit.tar.gz
+            tar zxvf trivy.tar.gz
+            sudo mv trivy /usr/local/bin/
+            rm trivy.tar.gz
           fi
 
           # Scan de la imagen
