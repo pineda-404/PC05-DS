@@ -1,0 +1,10 @@
+{
+  "workflow_run": "20118734261",
+  "timestamp": "2025-12-11T01:20:00Z",
+  "release": {
+    "version": "v1.0.0",
+    "commit": "0c0c351032c8bcabda91ffd891171c20b9ad791b",
+    "quality_requested": "random"
+  },
+  "analysis": {"version":"v1.0.0","status":"OK","metrics":{"error_rate":0.0145,"latency_p95":184.4,"throughput":1849,"generated_at":"2025-12-11T01:20:00.925089"},"reasons":["Todas las métricas dentro de los umbrales aceptables"]}
+}
