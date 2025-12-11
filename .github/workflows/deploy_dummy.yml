@@ -1,0 +1,84 @@
+name: Deploy Simulation
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version to deploy (ej: v2.0.0)"
+        required: true
+        default: "v1.0.0"
+      environment:
+        description: "Target environment"
+        required: true
+        default: "staging"
+        type: choice
+        options:
+          - staging
+          - production
+
+jobs:
+  simulate-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Simulate deployment
+        run: |
+          echo "========================================="
+          echo "  DEPLOYMENT SIMULATION"
+          echo "========================================="
+          echo ""
+          echo "Version:     ${{ github.event.inputs.version }}"
+          echo "Environment: ${{ github.event.inputs.environment }}"
+          echo "Timestamp:   $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "Commit:      ${{ github.sha }}"
+          echo "Triggered:   ${{ github.actor }}"
+          echo ""
+          echo "Deploying..."
+          sleep 2
+          echo "Deployment successful!"
+          echo "========================================="
+          
+      - name: Generate deploy log
+        run: |
+          cat > deploy-log.txt <<EOF
+          {
+            "deployment_id": "${{ github.run_id }}",
+            "version": "${{ github.event.inputs.version }}",
+            "environment": "${{ github.event.inputs.environment }}",
+            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "commit": "${{ github.sha }}",
+            "triggered_by": "${{ github.actor }}",
+            "status": "success",
+            "workflow": "deploy_dummy.yml"
+          }
+          EOF
+          
+          echo "Deploy log generated:"
+          cat deploy-log.txt | jq .
+      
+      - name: Upload deploy log as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy-log-${{ github.event.inputs.version }}
+          path: deploy-log.txt
+          retention-days: 30
+      
+      - name: Summary
+        run: |
+          echo "## Deployment Summary " >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Version:** ${{ github.event.inputs.version }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Environment:** ${{ github.event.inputs.environment }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Status:** Success" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Details" >> $GITHUB_STEP_SUMMARY
+          echo '```json' >> $GITHUB_STEP_SUMMARY
+          cat deploy-log.txt | jq . >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Next steps:**" >> $GITHUB_STEP_SUMMARY
+          echo "- Verify deployment in ${{ github.event.inputs.environment }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Run Release Analysis workflow to validate metrics" >> $GITHUB_STEP_SUMMARY
