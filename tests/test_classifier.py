@@ -2,8 +2,13 @@
 """
 Tests de la función clasificadora (refactorizado)
 """
+
 import pytest
-from app.classifier import classify_risk, ERROR_RATE_THRESHOLD, LATENCY_THRESHOLD, THROUGHPUT_MIN
+
+from app.classifier import (
+    classify_risk,
+)
+
 
 @pytest.fixture
 def base_metrics():
@@ -14,6 +19,7 @@ def base_metrics():
         "throughput": 1200,
     }
 
+
 def test_classify_risk_ok(base_metrics):
     """Métricas normales -> OK"""
     status, reasons = classify_risk(base_metrics)
@@ -21,11 +27,15 @@ def test_classify_risk_ok(base_metrics):
     assert len(reasons) == 1
     assert "aceptables" in reasons[0].lower()
 
-@pytest.mark.parametrize("override, expected_substr", [
-    ({"error_rate": 0.05}, "error rate"),
-    ({"latency_p95": 500}, "latencia"),
-    ({"throughput": 500}, "throughput"),
-])
+
+@pytest.mark.parametrize(
+    "override, expected_substr",
+    [
+        ({"error_rate": 0.05}, "error rate"),
+        ({"latency_p95": 500}, "latencia"),
+        ({"throughput": 500}, "throughput"),
+    ],
+)
 def test_classify_risk_single_problem(base_metrics, override, expected_substr):
     """
     Casos con un único problema -> RIESGOSO
@@ -36,6 +46,7 @@ def test_classify_risk_single_problem(base_metrics, override, expected_substr):
     # esperamos exactamente 1 razón en estos casos
     assert len(reasons) == 1
     assert expected_substr in reasons[0].lower()
+
 
 def test_classify_risk_multiple_problems():
     """Múltiples problemas -> RIESGOSO con varias razones"""

@@ -130,7 +130,7 @@ jobs:
 
       - name: Summary
         run: |
-          echo "## Release Analysis Summary :rocket:" >> $GITHUB_STEP_SUMMARY
+          echo "## Release Analysis Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Version:** ${{ github.event.inputs.version }}" >> $GITHUB_STEP_SUMMARY
           echo "**Status:** ${{ steps.analysis.outputs.status }}" >> $GITHUB_STEP_SUMMARY
