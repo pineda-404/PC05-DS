@@ -107,6 +107,22 @@ jobs:
           echo "Evidence report generated"
           cat .evidence/release-risk-report.json | jq .
 
+      - name: Generate timeline snapshot
+        run: |
+          echo "Capturing timeline snapshot..."
+          TIMELINE=$(curl -s http://localhost:8000/timeline)
+          echo "$TIMELINE" | jq . > timeline.json
+          
+          echo "Timeline captured with $(echo "$TIMELINE" | jq -r '.count') releases"
+          cat timeline.json | jq .
+
+      - name: Upload timeline as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: timeline-${{ github.event.inputs.version }}
+          path: timeline.json
+          retention-days: 30
+          
       - name: Upload evidence as artifact
         uses: actions/upload-artifact@v4
         with:
