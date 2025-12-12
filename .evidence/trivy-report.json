@@ -1,6 +1,6 @@
 {
   "SchemaVersion": 2,
-  "CreatedAt": "2025-12-12T01:02:52.911925761Z",
+  "CreatedAt": "2025-12-12T02:12:39.41493711Z",
   "ArtifactName": "release-radar:latest",
   "ArtifactType": "container_image",
   "Metadata": {
@@ -8,25 +8,25 @@
       "Family": "debian",
       "Name": "13.2"
     },
-    "ImageID": "sha256:b938ae00b209411304b69fbb7c0757d7c1af1c67e798acfd9684e3992906fff8",
+    "ImageID": "sha256:6d75c5d41242a1c00890fbfe88366458999fe88a1056659d09cf572833d67508",
     "DiffIDs": [
       "sha256:77a2b55fbe8b9984ce0af3ffc0b0ab62507668e63306ec161a585e587a3eb164",
       "sha256:557139ca12a043f1b904ffd4d12e7329a61268ffdc59b41568c66e1c206a95f8",
       "sha256:dc27ff3b74317086d239c785a48c28c436862fa970a529e53ac5b67a8f4b8408",
       "sha256:17bbb46fa426e94886aa1e2ad42c2b0890656e0556b95fe846890417afcc8598",
-      "sha256:e1fdab6bcd19b31dd9667164073abd7f8412a1e71393cc9b7bd785a03d4ca7e7",
+      "sha256:af70648449ce95b45139c01314b6d68166378d6b5b561d15e4e7c034458d80d0",
       "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
-      "sha256:5b4bf0b62d49133a9001498b4d1f7ee0ad5e0e2e97dd497ecf676d5537294508",
-      "sha256:a7fce06d2b2ca0668095a7110a689a3604a3601da693352438f45581c57b2cbc",
-      "sha256:ecea19fdfbe441a27609d481daf7bf9f9fec4bd91d2c1d982516baf35c18af4a",
-      "sha256:51612b955a4d2e99eecf70d07d4ff25f0e0cbc80f7c6766c2f2376691d73e225"
+      "sha256:363880a14359fe439d842d2da03b27e1b897e6438c89bbbde969a3676b64e97e",
+      "sha256:f5d9b45039be17a9812e6485c9f8f2166fdf4bed173323e89f5850dbee90f737",
+      "sha256:cb6914fcc4b845598be317f0fad2c0f393b2105bb21336197c30f17f6a330487",
+      "sha256:e6f13be1ee1d4c48adf8dbc9b537029b27c98e5e95b3d7c9267a779d9eafd9e9"
     ],
     "RepoTags": [
       "release-radar:latest"
     ],
     "ImageConfig": {
       "architecture": "amd64",
-      "created": "2025-12-12T01:02:42.672076045Z",
+      "created": "2025-12-12T02:12:28.078100829Z",
       "history": [
         {
           "created": "2025-12-08T00:00:00Z",
@@ -85,55 +85,55 @@
           "empty_layer": true
         },
         {
-          "created": "2025-12-12T01:02:34Z",
+          "created": "2025-12-12T02:12:19Z",
           "created_by": "RUN /bin/sh -c useradd -m -u 1000 appuser \u0026\u0026     mkdir -p /app \u0026\u0026     chown -R appuser:appuser /app # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-12T01:02:34Z",
+          "created": "2025-12-12T02:12:19Z",
           "created_by": "WORKDIR /app",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-12T01:02:34Z",
+          "created": "2025-12-12T02:12:19Z",
           "created_by": "COPY requirements.txt . # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-12T01:02:42Z",
+          "created": "2025-12-12T02:12:27Z",
           "created_by": "RUN /bin/sh -c pip install --no-cache-dir --upgrade pip \u0026\u0026     pip install --no-cache-dir -r requirements.txt # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-12T01:02:42Z",
+          "created": "2025-12-12T02:12:27Z",
           "created_by": "COPY --chown=appuser:appuser app/ ./app/ # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-12T01:02:42Z",
+          "created": "2025-12-12T02:12:28Z",
           "created_by": "RUN /bin/sh -c mkdir -p /app/data/metrics \u0026\u0026     chown -R appuser:appuser /app/data # buildkit",
           "comment": "buildkit.dockerfile.v0"
         },
         {
-          "created": "2025-12-12T01:02:42Z",
+          "created": "2025-12-12T02:12:28Z",
           "created_by": "USER appuser",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-12T01:02:42Z",
+          "created": "2025-12-12T02:12:28Z",
           "created_by": "EXPOSE map[8000/tcp:{}]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-12T01:02:42Z",
+          "created": "2025-12-12T02:12:28Z",
           "created_by": "HEALTHCHECK \u0026{[\"CMD-SHELL\" \"python -c \\\"import urllib.request; urllib.request.urlopen('http://localhost:8000/health')\\\" || exit 1\"] \"30s\" \"10s\" \"5s\" \"0s\" '\\x03'}",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
         },
         {
-          "created": "2025-12-12T01:02:42Z",
+          "created": "2025-12-12T02:12:28Z",
           "created_by": "CMD [\"uvicorn\" \"app.main:app\" \"--host\" \"0.0.0.0\" \"--port\" \"8000\"]",
           "comment": "buildkit.dockerfile.v0",
           "empty_layer": true
@@ -147,12 +147,12 @@
           "sha256:557139ca12a043f1b904ffd4d12e7329a61268ffdc59b41568c66e1c206a95f8",
           "sha256:dc27ff3b74317086d239c785a48c28c436862fa970a529e53ac5b67a8f4b8408",
           "sha256:17bbb46fa426e94886aa1e2ad42c2b0890656e0556b95fe846890417afcc8598",
-          "sha256:e1fdab6bcd19b31dd9667164073abd7f8412a1e71393cc9b7bd785a03d4ca7e7",
+          "sha256:af70648449ce95b45139c01314b6d68166378d6b5b561d15e4e7c034458d80d0",
           "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
-          "sha256:5b4bf0b62d49133a9001498b4d1f7ee0ad5e0e2e97dd497ecf676d5537294508",
-          "sha256:a7fce06d2b2ca0668095a7110a689a3604a3601da693352438f45581c57b2cbc",
-          "sha256:ecea19fdfbe441a27609d481daf7bf9f9fec4bd91d2c1d982516baf35c18af4a",
-          "sha256:51612b955a4d2e99eecf70d07d4ff25f0e0cbc80f7c6766c2f2376691d73e225"
+          "sha256:363880a14359fe439d842d2da03b27e1b897e6438c89bbbde969a3676b64e97e",
+          "sha256:f5d9b45039be17a9812e6485c9f8f2166fdf4bed173323e89f5850dbee90f737",
+          "sha256:cb6914fcc4b845598be317f0fad2c0f393b2105bb21336197c30f17f6a330487",
+          "sha256:e6f13be1ee1d4c48adf8dbc9b537029b27c98e5e95b3d7c9267a779d9eafd9e9"
         ]
       },
       "config": {
@@ -2676,7 +2676,7 @@
           "FixedVersion": "24.3.0",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:a7fce06d2b2ca0668095a7110a689a3604a3601da693352438f45581c57b2cbc"
+            "DiffID": "sha256:f5d9b45039be17a9812e6485c9f8f2166fdf4bed173323e89f5850dbee90f737"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-21503",
@@ -2723,7 +2723,7 @@
           "FixedVersion": "0.40.0",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:a7fce06d2b2ca0668095a7110a689a3604a3601da693352438f45581c57b2cbc"
+            "DiffID": "sha256:f5d9b45039be17a9812e6485c9f8f2166fdf4bed173323e89f5850dbee90f737"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2024-47874",
@@ -2763,7 +2763,7 @@
           "FixedVersion": "0.47.2",
           "Status": "fixed",
           "Layer": {
-            "DiffID": "sha256:a7fce06d2b2ca0668095a7110a689a3604a3601da693352438f45581c57b2cbc"
+            "DiffID": "sha256:f5d9b45039be17a9812e6485c9f8f2166fdf4bed173323e89f5850dbee90f737"
           },
           "SeveritySource": "ghsa",
           "PrimaryURL": "https://avd.aquasec.com/nvd/cve-2025-54121",
