@@ -1,6 +1,4 @@
-# Release Radar - Quality Gate Automatizado
-
-Sistema de Quality Gate que analiza automáticamente métricas de releases en staging para prevenir que código problemático llegue a producción, implementando el principio de Shift-Left Testing.
+# Release Radar
 
 ## Información del Equipo
 
@@ -268,139 +266,6 @@ PC05-DS/
 └── README.md                   # Este archivo
 ```
 
-## API Endpoints
-
-### `GET /health`
-
-Healthcheck del servicio.
-
-**Ejemplo:**
-
-```bash
-curl http://localhost:8000/health
-```
-
-**Respuesta:**
-
-```json
-{
-  "status": "healthy",
-  "version": "0.1.0",
-  "timestamp": "2025-12-11T22:30:00Z"
-}
-```
-
----
-
-### `POST /releases`
-
-Registra un nuevo release.
-
-**Body:**
-
-```json
-{
-  "version": "v1.0.0",
-  "commit": "abc123",
-  "metrics": {
-    "error_rate": 0.015,
-    "latency_p95": 250,
-    "throughput": 1500
-  }
-}
-```
-
-**Ejemplo:**
-
-```bash
-curl -X POST http://localhost:8000/releases \
-  -H "Content-Type: application/json" \
-  -d '{"version": "v1.0.0", "commit": "abc", "metrics": {...}}'
-```
-
----
-
-### `GET /analysis/{version}`
-
-Analiza un release y devuelve su clasificación de riesgo.
-
-**Ejemplo:**
-
-```bash
-curl http://localhost:8000/analysis/v1.0.0
-```
-
-**Respuesta (OK):**
-
-```json
-{
-  "version": "v1.0.0",
-  "status": "OK",
-  "metrics": {...},
-  "reasons": ["Todas las métricas dentro de los umbrales aceptables"]
-}
-```
-
-**Respuesta (RIESGOSO):**
-
-```json
-{
-  "version": "v2.0.0",
-  "status": "RIESGOSO",
-  "metrics": {...},
-  "reasons": [
-    "Error rate muy alto: 4.2% (umbral: 2%)",
-    "Latencia P95 excede umbral: 450ms (umbral: 300ms)"
-  ]
-}
-```
-
----
-
-### `GET /timeline`
-
-Devuelve todos los releases ordenados cronológicamente (más reciente primero).
-
-**Ejemplo:**
-
-```bash
-curl http://localhost:8000/timeline
-```
-
-**Respuesta:**
-
-```json
-{
-  "releases": [
-    {
-      "version": "v2.0.0",
-      "status": "RIESGOSO",
-      "timestamp": "2025-12-11T22:30:15",
-      "metrics": {...}
-    },
-    {
-      "version": "v1.0.0",
-      "status": "OK",
-      "timestamp": "2025-12-11T22:20:00",
-      "metrics": {...}
-    }
-  ],
-  "count": 2
-}
-```
-
----
-
-### `GET /releases`
-
-Lista todos los releases.
-
-**Ejemplo:**
-
-```bash
-curl http://localhost:8000/releases
-```
-
 ## Desarrollo Local
 
 ### Ejecutar sin Docker
@@ -555,9 +420,9 @@ PYTHONPATH=. pytest tests/ -v
 # → Seleccionar "Read and write permissions"
 ```
 
-![Settings Actions General](img/img1.png)
+![](img/im1.png)
 
-![Workflow Permissions](imag/img2.png)
+![](img/img2.png)
 
 ### Métricas no persisten
 
