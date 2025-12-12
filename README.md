@@ -420,7 +420,7 @@ PYTHONPATH=. pytest tests/ -v
 # → Seleccionar "Read and write permissions"
 ```
 
-![](img/im1.png)
+![](img/img1.png)
 
 ![](img/img2.png)
 
