@@ -10,9 +10,9 @@
 
 **Videos de Presentación:**
 
-- Sprint 1: [Enlace pendiente]
-- Sprint 2: [Enlace pendiente]
-- Sprint 3: [Enlace pendiente]
+- Sprint 1: https://www.youtube.com/watch?v=sauU2P8f3-0
+- Sprint 2: https://www.youtube.com/watch?v=1jmBz7Peg6Y
+- Sprint 3: https://www.youtube.com/watch?v=n82gylBdVDA
 
 ## Descripción del Proyecto
 
