@@ -93,9 +93,6 @@ def analyze_release(version: str):
     }
 
 
-# ============================================
-# SPRINT 3: NUEVO ENDPOINT
-# ============================================
 @app.get("/timeline")
 def get_timeline():
     """
