@@ -91,3 +91,32 @@ def analyze_release(version: str):
         "metrics": release["metrics"],
         "reasons": reasons,
     }
+
+
+# ============================================
+# SPRINT 3: NUEVO ENDPOINT
+# ============================================
+@app.get("/timeline")
+def get_timeline():
+    """
+    Devuelve todos los releases ordenados cronológicamente.
+    Más reciente primero.
+
+    Returns:
+        {
+            "releases": [
+                {
+                    "version": "v2.0.0",
+                    "status": "RIESGOSO",
+                    "timestamp": "2025-12-11T03:20:15",
+                    "metrics": {...}
+                },
+                ...
+            ],
+            "count": 2
+        }
+    """
+    releases = list(releases_db.values())
+    releases.sort(key=lambda r: r["timestamp"], reverse=True)
+
+    return {"releases": releases, "count": len(releases)}
