@@ -1,7 +1,7 @@
 {
-  "timestamp": "2025-12-12T05:20:39Z",
-  "workflow_run": "20157180932",
-  "commit": "fcaf490bde8419b950651178775e084fbc2657dc",
+  "timestamp": "2025-12-12T05:26:18Z",
+  "workflow_run": "20157278473",
+  "commit": "6ab83ea8410002e5a627f8aadd3dcfd773954a4c",
   "image": "release-radar:latest",
   "scans": {
     "trivy": ".evidence/trivy-report.json",
